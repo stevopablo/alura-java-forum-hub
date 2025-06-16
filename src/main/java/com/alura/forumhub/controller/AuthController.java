@@ -23,6 +23,7 @@ public class AuthController {
 
     @Autowired
     private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid Login dados){
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());

@@ -16,11 +16,13 @@ public class TratamentoErros {
         return ResponseEntity.notFound().build();
     }
 
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarErro400(MethodArgumentNotValidException ex){
         var erros = ex.getFieldErrors();
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
     }
+
 
     @ExceptionHandler(ValidacaoException.class)
     public ResponseEntity tratarErroRegrasDeNegocio(ValidacaoException ex){
